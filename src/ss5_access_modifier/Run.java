@@ -50,7 +50,17 @@ public class Run {
                    break;
                case 4:
                    System.out.println("Tìm kiếm");
+                   System.out.print("Nhập ID sản phẩm bạn muốn tìm kiếm: ");
+                   int idFind = Integer.parseInt(scanner.nextLine());
+
+                   Product productFind = productManagement.find(idFind);
+                   if(productFind != null){
+                       System.out.println("Tìm thấy: " + productFind);
+                   } else {
+                       System.out.println("Không tìm thấy sản phẩm với ID: " + idFind);
+                   }
                    break;
+
                case 5:
                    System.out.println("Đã kết thúc chương trình");
                    flag  = false;

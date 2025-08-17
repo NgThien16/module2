@@ -27,4 +27,12 @@ public class ProductManagement {
             }
         }
     }
+    public Product find(int id){
+        for(int i = 0; i < productList.length; i++){
+            if(productList[i] != null && productList[i].getId() == id){
+                return productList[i];
+            }
+        }
+        return null;
+    }
 }
