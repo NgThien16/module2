@@ -4,11 +4,13 @@ import ss8_customer.entity.Customer;
 import ss8_customer.repository.CustomerRepository;
 import ss8_customer.repository.ICustomerRepository;
 
+import java.util.List;
+
 public class CustomerService implements ICustomerService {
     private ICustomerRepository customerRepository = new CustomerRepository();
 
     @Override
-    public Customer[] findAll() {
+    public List<Customer> findAll() {
         return customerRepository.findAll();
     }
 
@@ -18,7 +20,17 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public boolean delete(Customer deleteCustomer) {
-        return customerRepository.delete(deleteCustomer);
+    public boolean delete(Customer customer) {
+        return customerRepository.delete(customer);
+    }
+
+    @Override
+    public Customer findById(int id) {
+        return customerRepository.findById(id);
+    }
+
+    @Override
+    public List<Customer> findByName(String name) {
+        return customerRepository.findByName(name);
     }
 }

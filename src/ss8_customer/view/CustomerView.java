@@ -3,11 +3,12 @@ package ss8_customer.view;
 import ss5_access_modifier.Product;
 import ss8_customer.entity.Customer;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CustomerView {
     private static Scanner scanner = new Scanner(System.in);
-    public static void display(Customer[] customerList) {
+    public static void display(List<Customer> customerList) {
         for (Customer customer : customerList) {
             if(customer != null){
                 System.out.println(customer);
@@ -34,4 +35,14 @@ public class CustomerView {
         Customer customerDelete = new Customer(id, null, null,  null);
         return customerDelete;
     }
+    public static int inputIdForSearch() {
+        System.out.println("Nhập id cần tìm");
+        return Integer.parseInt(scanner.nextLine());
+    }
+
+    public static String inputNameForSearch() {
+        System.out.println("Nhập tên cần tìm");
+        return scanner.nextLine();
+    }
+
 }

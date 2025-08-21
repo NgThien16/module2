@@ -2,41 +2,61 @@ package ss8_customer.repository;
 
 import ss8_customer.entity.Customer;
 
+import java.util.LinkedList;
+import java.util.List;
+
 
 
 public class CustomerRepository implements ICustomerRepository{
-    private static Customer[] customers= new Customer[100];
+    private static List<Customer> customers= new LinkedList<>();
     static{
-        customers[0]=new Customer(1, "Thien", "thien@gmail.com", "Son Tra");
-        customers[1]=new Customer(2, "Quy", "quy@gmail.com", "Hai Chau");
-        customers[2]=new Customer(3, "Trung", "trung@gmail.com", "Thanh Khe");
+        customers.add(new Customer(1, "Thien", "thien@gmail.com", "Son Tra"));
+        customers.add(new Customer(2, "Quy", "quy@gmail.com", "Hai Chau"));
+        customers.add(new Customer(3, "Trung", "trung@gmail.com", "Thanh Khe"));
 
     }
     @Override
-    public Customer[] findAll() {
+    public List<Customer> findAll() {
         return customers;
     }
 
     @Override
     public boolean add(Customer customer) {
-        for (int i=0;i<customers.length;i++){
-            if(customers[i]==null){
-                customers[i]=customer;
-                break;
-            }
-        }
+        customers.add(customer);
         return true;
     }
 
 
     @Override
     public boolean delete(Customer customer){
-        for(int i = 0; i < customers.length; i++){
-            if(customers[i] != customer&& customers[i].getId() ==customer.getId()){
-                customers[i] = null;
-                break;
+        for (Customer c : customers) {
+            if (c.getId() == customer.getId()) {
+                customers.remove(c);
+                return true;
             }
         }
         return false;
     }
+
+    @Override
+    public Customer findById(int id) {
+        for (Customer c : customers) {
+            if (c.getId() == id) {
+                return c;
+            }
+        }
+        return null; // không tìm thấy
+    }
+
+    @Override
+    public List<Customer> findByName(String name) {
+        List<Customer> result = new LinkedList<>();
+        for (Customer c : customers) {
+            if (c.getName().toLowerCase().contains(name.toLowerCase())) {
+                result.add(c);
+            }
+        }
+        return result; // có thể rỗng nếu không tìm thấy
+    }
+
 }

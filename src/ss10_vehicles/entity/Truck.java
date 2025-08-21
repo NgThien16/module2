@@ -1,0 +1,29 @@
+package ss10_vehicles.entity;
+
+public class Truck extends Vehicle{
+    private int payload;
+
+    public Truck(){
+
+    }
+
+    public Truck(int plate, String brand, int since, String owner, int payload) {
+        super(plate, brand, since, owner);
+        this.payload = payload;
+    }
+
+    public int getPayload() {
+        return payload;
+    }
+
+    public void setPayload(int payload) {
+        this.payload = payload;
+    }
+
+    @Override
+    public String toString() {
+        return "Truck{" +
+                "payload=" + payload +
+                '}';
+    }
+}

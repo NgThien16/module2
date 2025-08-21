@@ -5,6 +5,7 @@ import ss8_customer.service.ICustomerService;
 import ss8_customer.service.CustomerService;
 import ss8_customer.view.CustomerView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CustomerController {
@@ -26,7 +27,7 @@ public class CustomerController {
             switch (choice) {
                 case 1:
                     System.out.println("Danh sách");
-                    Customer[] customerList = customerService.findAll();
+                    List<Customer> customerList = customerService.findAll();
                     CustomerView.display(customerList);
                     break;
                 case 2:
@@ -51,7 +52,15 @@ public class CustomerController {
                     break;
                 case 4:
                     System.out.println("Tìm kiếm");
-                    // code mở rộng ở đây
+                    String searchCustomer = CustomerView.inputNameForSearch();
+                    List<Customer> foundCustomers = customerService.findByName(searchCustomer);
+
+                    if (foundCustomers.isEmpty()) {
+                        System.out.println("Tìm kiếm không thành công");
+                    } else {
+                        System.out.println("Kết quả tìm kiếm:");
+                        CustomerView.display(foundCustomers); // hàm hiển thị danh sách khách hàng
+                    }
                     break;
                 default:
                     System.out.println("Đã kết thúc chương trình");
