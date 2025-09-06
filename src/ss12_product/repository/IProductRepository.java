@@ -11,6 +11,6 @@ public interface IProductRepository {
 
     boolean delete(Product product);
 
-    Product findById(int id);                  // tìm 1 khách theo id
+    Product findById(int id);
     List<Product> findByName(String name);
 }

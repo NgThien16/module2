@@ -1,13 +1,14 @@
 package ss10_vehicles.entity;
 
-public class Oto extends Vehicle{
+public class Car extends Vehicle {
     private int seats;
     private String type;
-    public Oto(){
+
+    public Car() {
 
     }
 
-    public Oto(int plate, String brand, int since, String owner, int seats, String type) {
+    public Car(int plate, String brand, int since, String owner, int seats, String type) {
         super(plate, brand, since, owner);
         this.seats = seats;
         this.type = type;
@@ -31,7 +32,7 @@ public class Oto extends Vehicle{
 
     @Override
     public String toString() {
-        return "Oto{" +
+        return super.toString() +
                 "seats=" + seats +
                 ", type='" + type + '\'' +
                 '}';

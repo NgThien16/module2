@@ -22,14 +22,16 @@ public class MainController {
             switch (choice) {
                 case 1:
                     System.out.println("Thêm mới phương tiện");
-
+                    AddController.displayMenu();
+                    break;
 
                 case 2:
                     System.out.println("Hiển thị phương tiện");
+                    DisplayController.displayMenu();
 
                 case 3:
-                    System.out.println("Xóa");
-                    // code mở rộng ở đây
+                    System.out.println("Xóa phương tiện");
+
                     break;
                 case 4:
                     System.out.println("Tìm kiếm");

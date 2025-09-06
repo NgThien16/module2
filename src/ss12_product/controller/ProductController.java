@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class ProductController {
     public static void displayMenu() {
-        IProductService customerService = new ProductService();
+        IProductService productService = new ProductService();
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
         while (flag) {
@@ -27,13 +27,13 @@ public class ProductController {
             switch (choice) {
                 case 1:
                     System.out.println("Danh sách");
-                    List<Product> customerList = customerService.findAll();
+                    List<Product> customerList = productService.findAll();
                     ProductView.display(customerList);
                     break;
                 case 2:
                     System.out.println("Thêm mới");
                     Product addProduct = ProductView.inputDataForNewProduct();
-                    boolean isAddSuccess = customerService.add(addProduct);
+                    boolean isAddSuccess = productService.add(addProduct);
                     if (isAddSuccess) {
                         System.out.println("Thêm mới thành công");
                     } else {
@@ -43,7 +43,7 @@ public class ProductController {
                 case 3:
                     System.out.println("Xoá");
                     Product deleteProduct = ProductView.deleteProduct();
-                    boolean isDeleteSuccess = customerService.delete(deleteProduct);
+                    boolean isDeleteSuccess = productService.delete(deleteProduct);
                     if (isDeleteSuccess) {
                         System.out.println("Xóa thành công");
                     } else {
@@ -53,7 +53,7 @@ public class ProductController {
                 case 4:
                     System.out.println("Tìm kiếm");
                     String searchProduct = ProductView.inputNameForSearch();
-                    List<Product> foundProducts = customerService.findByName(searchProduct);
+                    List<Product> foundProducts = productService.findByName(searchProduct);
 
                     if (foundProducts.isEmpty()) {
                         System.out.println("Tìm kiếm không thành công");

@@ -1,13 +1,13 @@
 package ss10_vehicles.entity;
 
-public class motobike extends Vehicle{
+public class Motobike extends Vehicle{
     private int power;
 
-    public motobike(){
+    public Motobike(){
 
     }
 
-    public motobike(int plate, String brand, int since, String owner, int power) {
+    public Motobike(int plate, String brand, int since, String owner, int power) {
         super(plate, brand, since, owner);
         this.power = power;
     }
@@ -22,8 +22,8 @@ public class motobike extends Vehicle{
 
     @Override
     public String toString() {
-        return "motobike{" +
-                "power=" + power +
-                '}';
+        return super.toString() + ", power=" + power + '}';
     }
+
+
 }

@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class ProductView {
     private static Scanner scanner = new Scanner(System.in);
     public static void display(List<Product> productList) {
-        for (Product customer : productList) {
-            if(customer != null){
-                System.out.println(customer);
+        for (Product product : productList) {
+            if(product != null){
+                System.out.println(product);
             }else{
                 break;
             }

@@ -48,7 +48,14 @@ public class Vehicle {
         this.owner = owner;
     }
 
+    @Override
     public String toString() {
-        return plate + "," + brand + "," + since + "," + owner;
+        return "Vehicle{" +
+                "plate=" + plate +
+                ", brand='" + brand + '\'' +
+                ", since=" + since +
+                ", owner='" + owner + '\'' +
+                '}';
     }
+
 }

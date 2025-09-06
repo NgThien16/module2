@@ -1,6 +1,8 @@
 package ss12_product.entity;
 
-public class Product {
+import ss10_vehicles.entity.Car;
+
+public class Product extends Car {
     private int id;
     private String name;
     private float price;
