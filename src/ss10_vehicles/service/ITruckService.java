@@ -9,8 +9,5 @@ public interface ITruckService {
     boolean add(Truck truck);
 
 
-    boolean delete(Truck truck);
-
-    Truck findById(int plate);
-    List<Truck> findByName(String name);
+    boolean delete(int plate);
 }

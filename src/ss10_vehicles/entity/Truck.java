@@ -24,4 +24,9 @@ public class Truck extends Vehicle{
     public String toString() {
         return super.toString() + ", payload=" + payload + '}';
     }
+
+    @Override
+    public String getInfoToCSV() {
+        return this.getPlate()+","+this.getBrand()+","+this.getSince()+","+this.getOwner()+","+this.payload;
+    }
 }

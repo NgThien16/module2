@@ -1,6 +1,6 @@
 package ss10_vehicles.entity;
 
-public class Vehicle {
+public abstract class Vehicle {
    private int plate;
    private String brand;
    private int since;
@@ -57,5 +57,5 @@ public class Vehicle {
                 ", owner='" + owner + '\'' +
                 '}';
     }
-
+    public abstract String getInfoToCSV();
 }

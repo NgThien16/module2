@@ -19,17 +19,7 @@ public class TruckService implements ITruckService {
     }
 
     @Override
-    public boolean delete(Truck truck) {
-        return truckRepository.delete(truck);
-    }
-
-    @Override
-    public Truck findById(int plate) {
-        return truckRepository.findById(plate);
-    }
-
-    @Override
-    public List<Truck> findByName(String name) {
-        return truckRepository.findByName(name);
+    public boolean delete(int plate) {
+        return truckRepository.delete(plate);
     }
 }

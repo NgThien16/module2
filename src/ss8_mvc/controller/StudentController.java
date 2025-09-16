@@ -5,6 +5,7 @@ import ss8_mvc.service.IStudentService;
 import ss8_mvc.service.StudentService;
 import ss8_mvc.view.StudentView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class StudentController {
@@ -26,7 +27,7 @@ public class StudentController {
             switch (choice) {
                 case 1:
                     System.out.println("Danh sách");
-                    Student[] studentList = studentService.findAll();
+                    List<Student> studentList = studentService.findAll();
                     StudentView.displayList(studentList);
                     break;
                 case 2:
@@ -40,8 +41,14 @@ public class StudentController {
                     }
                     break;
                 case 3:
-                    System.out.println("Xoá");
-                    // code mở rộng ở đây
+                    System.out.println("Nhập id muốn xoá");
+                    int deleteId = Integer.parseInt(scanner.nextLine());
+                    boolean check = studentService.deleteById(deleteId);
+                    if (check){
+                        System.out.println("Xoá thành công");
+                    }else {
+                        System.out.println("Xoá không thành công");
+                    }
                     break;
                 case 4:
                     System.out.println("Tìm kiếm");

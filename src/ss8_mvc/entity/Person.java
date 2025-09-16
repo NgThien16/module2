@@ -1,6 +1,6 @@
 package ss8_mvc.entity;
 
-public class Person {
+public abstract class Person {
     private int id;
     private String name;
 
@@ -29,4 +29,5 @@ public class Person {
                 "id= "+id+
                 ", name=' "+ name;
     }
+    public abstract String getInfoToCSV();
 }

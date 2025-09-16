@@ -4,13 +4,11 @@ import ss10_vehicles.entity.Motobike;
 
 import java.util.List;
 
-public interface IMotobikeRepository {
+public interface IMotobikeRepository extends IRepository<Motobike> {
     List<Motobike> findAll();
     boolean add(Motobike motobike);
 
 
-    boolean delete(Motobike motobike);
+    boolean delete(int plate);
 
-    Motobike findById(int id);
-    List<Motobike> findByName(String name);
 }

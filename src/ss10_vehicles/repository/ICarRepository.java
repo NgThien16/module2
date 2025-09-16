@@ -8,9 +8,5 @@ public interface ICarRepository {
     List<Car> findAll();
     boolean add(Car car);
 
-
-    boolean delete(Car car);
-
-    Car findById(int id);
-    List<Car> findByName(String name);
+    boolean delete(int plate);
 }

@@ -32,11 +32,10 @@ public class TruckView {
         Truck truck= new Truck(plate, brand, since, owner, payload);
         return truck;
     }
-    public  static Truck deleteTruck() {
-        System.out.println("Nhập biển kiếm soát cần xóa");
-        int plate = Integer.parseInt(scanner.nextLine());
-        Truck truckDelete = new Truck(plate, null, 0, null, 0);
-        return truckDelete;
+    public  static String deleteTruck() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập biển kiểm soát xe tải cần xóa: ");
+        return scanner.nextLine();
     }
 //    public static int inputIdForSearch() {
 //        System.out.println("Nhập id cần tìm");

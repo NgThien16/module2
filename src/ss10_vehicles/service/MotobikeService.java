@@ -13,23 +13,15 @@ public class MotobikeService implements IMotobikeService {
         return motobikeRepository.findAll();
     }
 
+
     @Override
     public boolean add(Motobike motobike) {
         return motobikeRepository.add(motobike);
     }
 
-    @Override
-    public boolean delete(Motobike motobike) {
-        return motobikeRepository.delete(motobike);
-    }
 
     @Override
-    public Motobike findById(int id) {
-        return motobikeRepository.findById(id);
-    }
-
-    @Override
-    public List<Motobike> findByName(String name) {
-        return motobikeRepository.findByName(name);
+    public boolean delete(int plate) {
+        return motobikeRepository.delete(plate);
     }
 }

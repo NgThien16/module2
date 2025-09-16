@@ -37,4 +37,9 @@ public class Car extends Vehicle {
                 ", type='" + type + '\'' +
                 '}';
     }
+
+    @Override
+    public String getInfoToCSV() {
+        return this.getPlate() +","+this.getBrand()+","+this.getSince()+","+this.getOwner()+","+this.seats+","+this.type;
+    }
 }

@@ -6,6 +6,11 @@ public class Teacher extends Person{
     public Teacher() {
     }
 
+    @Override
+    public String getInfoToCSV() {
+        return "";
+    }
+
     public Teacher(int id, String name, double salary) {
         super(id, name);
         this.salary = salary;

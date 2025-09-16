@@ -1,46 +1,153 @@
 package ss10_vehicles.controller;
 
-
+import ss10_vehicles.entity.Motobike;
 
 import java.util.Scanner;
 
 public class MainController {
     public static void displayMenu() {
         Scanner scanner = new Scanner(System.in);
+        CarController carController = new CarController();
+        MotobikeController motobikeController = new MotobikeController();
+        TruckController truckController = new TruckController();
+
         boolean flag = true;
         while (flag) {
-            System.out.println("------------Quản lý phương tiện giao thông----------");
-            System.out.println("Chức năng: " +
-                    "\n 1. Thêm mới phương tiện" +
-                    "\n 2. Hiển thị phương tiện" +
-                    "\n 3. Xoá phương tiện" +
-                    "\n 4. Tìm kiếm" +
-                    "\n 5. Qua lại menu chính"
-            );
-            System.out.println("Chọn chức năng");
+            System.out.println("===== CHƯƠNG TRÌNH QUẢN LÝ PHƯƠNG TIỆN GIAO THÔNG =====");
+            System.out.println("Chọn chức năng:");
+            System.out.println("1. Thêm mới phương tiện");
+            System.out.println("2. Hiển thị phương tiện");
+            System.out.println("3. Xóa phương tiện");
+            System.out.println("4. Tìm kiếm theo biển kiểm soát");
+            System.out.println("5. Thoát");
+            System.out.print("Nhập lựa chọn: ");
+
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    System.out.println("Thêm mới phương tiện");
-                    AddController.displayMenu();
+                    boolean addFlag = true;
+                    while (addFlag) {
+                        System.out.println("---- THÊM MỚI PHƯƠNG TIỆN ----");
+                        System.out.println("1. Thêm Ô tô");
+                        System.out.println("2. Thêm Xe máy");
+                        System.out.println("3. Thêm Xe tải");
+                        System.out.println("4. Quay lại");
+                        System.out.print("Nhập lựa chọn: ");
+                        int addChoice = Integer.parseInt(scanner.nextLine());
+                        switch (addChoice) {
+                            case 1:
+                                carController.addCar();
+                                break;
+                            case 2:
+                                motobikeController.addMotobike();
+                                break;
+                            case 3:
+                                truckController.addTruck();
+                                break;
+                            case 4:
+                                addFlag = false;
+                                break;
+                            default:
+                                System.out.println("Lựa chọn không hợp lệ!");
+                        }
+                    }
                     break;
 
                 case 2:
-                    System.out.println("Hiển thị phương tiện");
-                    DisplayController.displayMenu();
+                    boolean displayFlag = true;
+                    while (displayFlag) {
+                        System.out.println("---- HIỂN THỊ PHƯƠNG TIỆN ----");
+                        System.out.println("1. Hiển thị Ô tô");
+                        System.out.println("2. Hiển thị Xe máy");
+                        System.out.println("3. Hiển thị Xe tải");
+                        System.out.println("4. Quay lại");
+                        System.out.print("Nhập lựa chọn: ");
+                        int displayChoice = Integer.parseInt(scanner.nextLine());
+                        switch (displayChoice) {
+                            case 1:
+                                carController.displayCar();
+                                break;
+                            case 2:
+                                motobikeController.displayMotobike();
+                                break;
+                            case 3:
+                                truckController.displayTruck();
+                                break;
+                            case 4:
+                                displayFlag = false;
+                                break;
+                            default:
+                                System.out.println("Lựa chọn không hợp lệ!");
+                        }
+                    }
+                    break;
 
                 case 3:
-                    System.out.println("Xóa phương tiện");
+                    boolean deleteFlag = true;
+                    while (deleteFlag) {
+                        System.out.println("---- XÓA PHƯƠNG TIỆN ----");
+                        System.out.println("1. Xóa Ô tô");
+                        System.out.println("2. Xóa Xe máy");
+                        System.out.println("3. Xóa Xe tải");
+                        System.out.println("4. Quay lại");
+                        System.out.print("Nhập lựa chọn: ");
+                        int deleteChoice = Integer.parseInt(scanner.nextLine());
+                        switch (deleteChoice) {
+                            case 1:
+                                carController.deleteCar();
+                                break;
+                            case 2:
+                                motobikeController.deleteMotobike();
+                                break;
+                            case 3:
+                                truckController.deleteTruck();
+                                break;
+                            case 4:
+                                deleteFlag = false;
+                                break;
+                            default:
+                                System.out.println("Lựa chọn không hợp lệ!");
+                        }
+                    }
+                    break;
 
-                    break;
                 case 4:
-                    System.out.println("Tìm kiếm");
-                    // code mở rộng ở đây
+                    boolean findFlag = true;
+                    while (findFlag) {
+                        System.out.println("---- TÌM KIẾM PHƯƠNG TIỆN ----");
+                        System.out.println("1. Tìm Ô tô");
+                        System.out.println("2. Tìm Xe máy");
+                        System.out.println("3. Tìm Xe tải");
+                        System.out.println("4. Quay lại");
+                        System.out.print("Nhập lựa chọn: ");
+                        int findChoice = Integer.parseInt(scanner.nextLine());
+                        switch (findChoice) {
+                            case 1:
+                                carController.searchCar();
+                                break;
+                            case 2:
+                                motobikeController.searchMotobike();
+                                break;
+                            case 3:
+                                truckController.searchTruck();
+                                break;
+                            case 4:
+                                findFlag = false;
+                                break;
+                            default:
+                                System.out.println("Lựa chọn không hợp lệ!");
+                        }
+                    }
                     break;
-                default:
-                    System.out.println("Đã kết thúc chương trình");
+
+
+                case 5:
                     flag = false;
+                    System.out.println("Thoát chương trình!");
                     break;
+
+                default:
+                    System.out.println("Lựa chọn không hợp lệ!");
             }
         }
     }

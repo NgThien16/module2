@@ -25,5 +25,10 @@ public class Motobike extends Vehicle{
         return super.toString() + ", power=" + power + '}';
     }
 
+    @Override
+    public String getInfoToCSV() {
+        return this.getPlate()+","+this.getBrand()+","+this.getSince()+","+this.getOwner()+","+this.getPower();
+    }
+
 
 }

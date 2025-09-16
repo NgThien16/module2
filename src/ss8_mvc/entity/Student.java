@@ -10,6 +10,15 @@ public class Student extends Person {
         super(id, name);
         this.score = score;
     }
+
+    public float getScore() {
+        return score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
+    }
+
     @Override
     public String toString() {
         return "Student{"+
@@ -17,4 +26,10 @@ public class Student extends Person {
                 ", score=' "+score+'\''+
                 '}';
     }
+
+    @Override
+    public String getInfoToCSV() {
+        return this.getId()+","+this.getName()+","+this.getScore();
+    }
+
 }

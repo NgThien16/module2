@@ -1,7 +1,6 @@
 package ss10_vehicles.view;
 
 import ss10_vehicles.entity.Car;
-import ss12_product.entity.Product;
 
 import java.util.List;
 import java.util.Scanner;
@@ -33,11 +32,10 @@ public class CarView {
         Car car= new Car(plate, brand, since, owner, seats, type);
         return car;
     }
-    public  static Car deleteCar() {
-        System.out.println("Nhập biển kiểm soát cần xóa");
-        int plate = Integer.parseInt(scanner.nextLine());
-        Car carDelete = new Car(plate, null, 0, null, 0, null);
-        return carDelete;
+    public  static String deleteCar() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập biển kiểm soát ô tô cần xóa: ");
+        return scanner.nextLine();
     }
     public static int inputIdForSearch() {
         System.out.println("Nhập id cần tìm");

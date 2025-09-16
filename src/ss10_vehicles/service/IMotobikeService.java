@@ -1,16 +1,14 @@
 package ss10_vehicles.service;
 
 import ss10_vehicles.entity.Motobike;
+import ss10_vehicles.repository.IRepository;
 
 import java.util.List;
 
-public interface IMotobikeService {
+public interface IMotobikeService  {
     List<Motobike> findAll();
     boolean add(Motobike motobike);
+    boolean delete(int plate);
 
 
-    boolean delete(Motobike motobike);
-
-    Motobike findById(int id);
-    List<Motobike> findByName(String name);
 }

@@ -31,11 +31,10 @@ public class MotobikeView {
         Motobike motobike= new Motobike(plate, brand, since, owner, power);
         return motobike;
     }
-    public  static Motobike deleteMotobike() {
-        System.out.println("Nhập biển kiểm soát cần xóa");
-        int plate = Integer.parseInt(scanner.nextLine());
-        Motobike motobikeDelete = new Motobike(plate, null, 0, null, 0);
-        return motobikeDelete;
+    public  static String deleteMotobike() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập biển kiểm soát ô tô cần xóa: ");
+        return scanner.nextLine();
     }
 //    public static int inputIdForSearch() {
 //        System.out.println("Nhập id cần tìm");
