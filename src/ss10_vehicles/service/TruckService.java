@@ -19,7 +19,12 @@ public class TruckService implements ITruckService {
     }
 
     @Override
-    public boolean delete(int plate) {
+    public boolean delete(String plate) {
         return truckRepository.delete(plate);
+    }
+
+    @Override
+    public Truck findTruckByPlate(String plate) {
+        return truckRepository.findTruckByPlate(plate);
     }
 }

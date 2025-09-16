@@ -1,10 +1,11 @@
 package ss10_vehicles.repository;
 
 import ss10_vehicles.entity.Car;
-import ss8_mvc.util.ReadAndWriteFile;
+import ss10_vehicles.util.ReadAndWriteFile;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class CarRepository implements ICarRepository {
             String[] array = null;
             for(int i = 0; i < stringList.size(); i++){
                 array = stringList.get(i).split(",");
-                Car car = new Car(Integer.parseInt(array[0]),array[1],Integer.parseInt(array[2]),array[3],Integer.parseInt(array[4]),array[5]);
+                Car car = new Car(array[0],array[1],Integer.parseInt(array[2]),array[3],Integer.parseInt(array[4]),array[5]);
                 carList.add(car);
             }
         }catch(IOException e){
@@ -41,27 +42,43 @@ public class CarRepository implements ICarRepository {
     }
 
     @Override
-    public boolean delete(int plate){
+    public boolean delete(String plate) {
         boolean isSuccessDelete = false;
         List<Car> carList = this.findAll();
-        for(int i = 0; i < carList.size(); i++){
-            if(false){
+
+
+
+        // convert from listStudent tolistString
+        for (int i = 0; i < carList.size(); i++) {
+            if (carList.get(i).getPlate().equals(plate)) {
                 carList.remove(i);
                 isSuccessDelete = true;
                 break;
             }
         }
-        List<String> stringList = new LinkedList<>();
-        // convert from listStudent tolistString
-        for(int i = 0; i < carList.size(); i++){
-            stringList.add(carList.get(i).getInfoToCSV());
+        List<String> stringList = new ArrayList<>();
+        for(Car car : carList){
+            stringList.add(car.getInfoToCSV());
         }
-        try{
-            ReadAndWriteFile.writeListStringToCSV(CAR_FILE, stringList,false);
+            try {
+                ReadAndWriteFile.writeListStringToCSV(CAR_FILE, stringList, false);
 
-        }catch(IOException e){
-            System.out.println("Error writing file");
+            } catch (IOException e) {
+                System.out.println("Error writing file");
+            }
+            return isSuccessDelete;
+
+    }
+
+    @Override
+    public Car findCarByPlate(String plate) {
+        List<Car> carList = findAll();
+        for (Car car : carList) {
+            if (car.getPlate().equals(plate)) {
+                return car;
+            }
         }
-        return isSuccessDelete;
+        return null;
     }
 }
+

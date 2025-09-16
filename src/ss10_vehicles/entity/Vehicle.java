@@ -1,7 +1,7 @@
 package ss10_vehicles.entity;
 
 public abstract class Vehicle {
-   private int plate;
+   private String plate;
    private String brand;
    private int since;
    private String owner;
@@ -9,18 +9,18 @@ public abstract class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(int plate, String brand, int since, String owner) {
+    public Vehicle(String plate, String brand, int since, String owner) {
         this.plate = plate;
         this.brand = brand;
         this.since = since;
         this.owner = owner;
     }
 
-    public int getPlate() {
+    public String getPlate() {
         return plate;
     }
 
-    public void setPlate(int plate) {
+    public void setPlate(String plate) {
         this.plate = plate;
     }
 

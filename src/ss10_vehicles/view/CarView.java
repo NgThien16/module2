@@ -18,7 +18,7 @@ public class CarView {
     }
     public static Car inputDataForNewCar() {
         System.out.println("Nhập biển kiểm soát");
-        int plate = Integer.parseInt(scanner.nextLine());
+        String plate = scanner.nextLine();
         System.out.println("Nhập tên hãng xe");
         String brand = scanner.nextLine();
         System.out.println("Nhập năm sản xuất");
@@ -37,13 +37,10 @@ public class CarView {
         System.out.print("Nhập biển kiểm soát ô tô cần xóa: ");
         return scanner.nextLine();
     }
-    public static int inputIdForSearch() {
-        System.out.println("Nhập id cần tìm");
-        return Integer.parseInt(scanner.nextLine());
-    }
 
-    public static String inputNameForSearch() {
-        System.out.println("Nhập tên cần tìm");
+
+    public static String inputPlateForSearch() {
+        System.out.println("Nhập biển kiểm soát ôtô cần tìm: ");
         return scanner.nextLine();
     }
 }

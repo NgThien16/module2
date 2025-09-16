@@ -1,9 +1,12 @@
 package ss10_vehicles.controller;
 
+import ss10_vehicles.entity.Car;
 import ss10_vehicles.entity.Motobike;
 import ss10_vehicles.service.*;
+import ss10_vehicles.view.CarView;
 import ss10_vehicles.view.MotobikeView;
 
+import java.util.ArrayList;
 import java.util.List;
 public class MotobikeController {
     private IMotobikeService motobikeService= new MotobikeService();
@@ -27,7 +30,7 @@ public class MotobikeController {
 
 
     public void deleteMotobike() {
-        int plate= Integer.parseInt(MotobikeView.deleteMotobike());
+        String plate=MotobikeView.deleteMotobike();
         boolean result = motobikeService.delete(plate);
         if (result) {
             System.out.println("Xóa thành công xe máy có biển số " + plate);
@@ -35,6 +38,17 @@ public class MotobikeController {
             System.out.println("Không tìm thấy xe máy có biển số " + plate);
         }
     }
-    public void searchMotobike() {}
+    public void searchMotobike() {
+        String plate = MotobikeView.inputPlateForSearch();
+        Motobike motobike = motobikeService.findMotobikeByPlate(plate);
+        if (motobike != null) {
+            System.out.println("Tìm thấy ô tô:");
+            List<Motobike> list = new ArrayList<>();
+            list.add(motobike);
+            MotobikeView.displayMotobike(list);
+        } else {
+            System.out.println("Không tìm thấy xe máy có biển số " + plate);
+        }
+    }
 }
 

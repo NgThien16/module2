@@ -9,6 +9,7 @@ import ss10_vehicles.view.MotobikeView;
 import ss10_vehicles.view.TruckView;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -34,7 +35,7 @@ public class TruckController {
 
 
     public void deleteTruck() {
-        int plate= Integer.parseInt(TruckView.deleteTruck());
+        String plate= TruckView.deleteTruck();
         boolean result = truckService.delete(plate);
         if (result) {
             System.out.println("Xóa thành công ô tô có biển số " + plate);
@@ -43,6 +44,16 @@ public class TruckController {
         }
     }
     public void searchTruck() {
+        String plate = TruckView.inputPlateForSearch();
+        Truck truck = truckService.findTruckByPlate(plate);
+        if (truck != null) {
+            System.out.println("Tìm thấy ô tô:");
+            List<Truck> list = new ArrayList<>();
+            list.add(truck);
+            TruckView.displayTruck(list);
+        } else {
+            System.out.println("Không tìm thấy xe tải có biển số " + plate);
+        }
 
     }
 }

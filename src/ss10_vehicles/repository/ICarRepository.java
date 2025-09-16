@@ -4,9 +4,7 @@ import ss10_vehicles.entity.Car;
 
 import java.util.List;
 
-public interface ICarRepository {
-    List<Car> findAll();
-    boolean add(Car car);
+public interface ICarRepository extends IRepository<Car> {
+Car findCarByPlate(String plate);
 
-    boolean delete(int plate);
 }

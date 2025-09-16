@@ -7,6 +7,7 @@ import ss10_vehicles.service.ICarService;
 import ss10_vehicles.view.CarView;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -34,7 +35,7 @@ public class CarController {
 
 
     public void deleteCar() {
-        int plate= Integer.parseInt(CarView.deleteCar());
+        String plate = CarView.deleteCar();
         boolean result = carService.delete(plate);
         if (result) {
             System.out.println("Xóa thành công ô tô có biển số " + plate);
@@ -42,17 +43,18 @@ public class CarController {
             System.out.println("Không tìm thấy ô tô có biển số " + plate);
         }
     }
-    public void searchCar() {
-//        int plate = CarView.searchCar();
-//        Car car = carService.findByBienKiemSoat(plate);
-//        if (car != null) {
-//            System.out.println("Tìm thấy ô tô:");
-//            List<Oto> list = new ArrayList<>();
-//            list.add(oto);
-//            OtoView.displayList(list);
-//        } else {
-//            System.out.println("Không tìm thấy ô tô có biển số " + plate);
-//        }
-    }
 
+    public void searchCar() {
+        String plate = CarView.inputPlateForSearch();
+        Car car = carService.findCarByPlate(plate);
+        if (car != null) {
+            System.out.println("Tìm thấy ô tô:");
+            List<Car> list = new ArrayList<>();
+            list.add(car);
+            CarView.displayCar(list);
+        } else {
+            System.out.println("Không tìm thấy ô tô có biển số " + plate);
+        }
+    }
 }
+

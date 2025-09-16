@@ -20,7 +20,12 @@ public class CarService implements ICarService {
     }
 
     @Override
-    public boolean delete(int plate) {
+    public boolean delete(String plate) {
         return carRepository.delete(plate);
+    }
+
+    @Override
+    public Car findCarByPlate(String plate) {
+        return carRepository.findCarByPlate(plate);
     }
 }

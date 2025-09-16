@@ -1,6 +1,7 @@
 package ss10_vehicles.repository;
 
 
+import ss10_vehicles.entity.Car;
 import ss10_vehicles.entity.Truck;
 import ss8_mvc.util.ReadAndWriteFile;
 
@@ -18,7 +19,7 @@ public class TruckRepository implements ITruckRepository {
             String[] array = null;
             for (int i = 0; i < stringList.size(); i++) {
                 array = stringList.get(i).split(",");
-                Truck truck = new Truck(Integer.parseInt(array[0]), array[1], Integer.parseInt(array[2]), array[3], Integer.parseInt(array[4]));
+                Truck truck = new Truck(array[0], array[1], Integer.parseInt(array[2]), array[3], Integer.parseInt(array[4]));
                 truckList.add(truck);
             }
         } catch (IOException e) {
@@ -41,11 +42,11 @@ public class TruckRepository implements ITruckRepository {
     }
 
     @Override
-    public boolean delete(int plate) {
+    public boolean delete(String plate) {
         boolean isSuccessDelete = false;
         List<Truck> truckList = this.findAll();
         for(int i = 0; i < truckList.size(); i++){
-            if(false){
+            if(truckList.get(i).getPlate().equals(plate)){
                 truckList.remove(i);
                 isSuccessDelete = true;
                 break;
@@ -53,8 +54,8 @@ public class TruckRepository implements ITruckRepository {
         }
         List<String> stringList = new LinkedList<>();
         // convert from listStudent tolistString
-        for(int i = 0; i < truckList.size(); i++){
-            stringList.add(truckList.get(i).getInfoToCSV());
+        for(Truck truck : truckList){
+            stringList.add(truck.getInfoToCSV());
         }
         try{
             ReadAndWriteFile.writeListStringToCSV(TRUCK_FILE, stringList,false);
@@ -63,5 +64,16 @@ public class TruckRepository implements ITruckRepository {
             System.out.println("Error writing file");
         }
         return isSuccessDelete;
+    }
+
+    @Override
+    public Truck findTruckByPlate(String plate) {
+        List<Truck> truckList = findAll();
+        for (Truck truck : truckList) {
+            if (truck.getPlate().equals(plate)) {
+                return truck;
+            }
+        }
+        return null;
     }
 }

@@ -21,7 +21,12 @@ public class MotobikeService implements IMotobikeService {
 
 
     @Override
-    public boolean delete(int plate) {
+    public boolean delete(String plate) {
         return motobikeRepository.delete(plate);
+    }
+
+    @Override
+    public Motobike findMotobikeByPlate(String plate) {
+        return  motobikeRepository.findMotobikeByPlate(plate);
     }
 }

@@ -7,7 +7,7 @@ public class Motobike extends Vehicle{
 
     }
 
-    public Motobike(int plate, String brand, int since, String owner, int power) {
+    public Motobike(String plate, String brand, int since, String owner, int power) {
         super(plate, brand, since, owner);
         this.power = power;
     }

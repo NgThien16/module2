@@ -7,7 +7,7 @@ public class Truck extends Vehicle{
 
     }
 
-    public Truck(int plate, String brand, int since, String owner, int payload) {
+    public Truck(String plate, String brand, int since, String owner, int payload) {
         super(plate, brand, since, owner);
         this.payload = payload;
     }

@@ -1,9 +1,9 @@
 package ss10_vehicles.repository;
 
+
 import ss10_vehicles.entity.Car;
 import ss10_vehicles.entity.Motobike;
-import ss8_mvc.util.ReadAndWriteFile;
-
+import ss10_vehicles.util.ReadAndWriteFile;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -21,7 +21,7 @@ public class MotobikeRepository implements IMotobikeRepository {
             String[] array = null;
             for (int i = 0; i < stringList.size(); i++) {
                 array = stringList.get(i).split(",");
-                Motobike motobike = new Motobike(Integer.parseInt(array[0]), array[1], Integer.parseInt(array[2]), array[3], Integer.parseInt(array[4]));
+                Motobike motobike = new Motobike(array[0], array[1], Integer.parseInt(array[2]), array[3], Integer.parseInt(array[4]));
                 motobikeList.add(motobike);
             }
         } catch (IOException e) {
@@ -44,11 +44,11 @@ public class MotobikeRepository implements IMotobikeRepository {
     }
 
     @Override
-    public boolean delete(int plate) {
+    public boolean delete(String plate) {
         boolean isSuccessDelete = false;
         List<Motobike> motobikeList = this.findAll();
         for(int i = 0; i < motobikeList.size(); i++){
-            if(false){
+            if(motobikeList.get(i).getPlate().equals(plate)){
                 motobikeList.remove(i);
                 isSuccessDelete = true;
                 break;
@@ -56,8 +56,8 @@ public class MotobikeRepository implements IMotobikeRepository {
         }
         List<String> stringList = new LinkedList<>();
         // convert from listStudent tolistString
-        for(int i = 0; i < motobikeList.size(); i++){
-            stringList.add(motobikeList.get(i).getInfoToCSV());
+        for(Motobike motobike : motobikeList){
+            stringList.add(motobike.getInfoToCSV());
         }
         try{
             ReadAndWriteFile.writeListStringToCSV(MOTORBIKE_FILE, stringList,false);
@@ -66,6 +66,17 @@ public class MotobikeRepository implements IMotobikeRepository {
             System.out.println("Error writing file");
         }
         return isSuccessDelete;
+    }
+
+    @Override
+    public Motobike findMotobikeByPlate(String plate) {
+        List<Motobike> motobikeList = findAll();
+        for (Motobike motobike : motobikeList) {
+            if (motobike.getPlate().equals(plate)) {
+                return motobike;
+            }
+        }
+        return null;
     }
 
 }

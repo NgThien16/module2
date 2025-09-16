@@ -7,5 +7,6 @@ import java.util.List;
 public interface ICarService {
     List<Car> findAll();
     boolean add(Car car);
-    boolean delete(int plate);
+    boolean delete(String plate);
+    Car findCarByPlate(String plate);
 }
