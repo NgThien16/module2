@@ -21,5 +21,9 @@ public class CheckValidate {
         String regexSalary = "^[1-9][0-9]+$";
         return salary.matches(regexSalary);
     }
+    public static boolean checkCustomerId(String customerId){
+        String regexCustomerId ="^[K][H][-][0-9]{4}$";
+        return customerId.matches(regexCustomerId);
+    }
 
 }

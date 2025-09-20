@@ -1,24 +1,23 @@
 package case_study_1.view;
 
-import case_study_1.entity.Employee;
+import case_study_1.entity.Customer;
 import case_study_1.util.CheckValidate;
-
 
 import java.util.List;
 import java.util.Scanner;
 
-public class EmployeeView {
+public class CustomerView {
     private static Scanner scanner = new  Scanner(System.in);
-    public static void displayEmployee(List<Employee> employeeList){
-        for(Employee employee: employeeList){
-            if(employee != null) {
-                System.out.println(employee);
+    public static void displayCustomer(List<Customer> customerList){
+        for(Customer customer: customerList){
+            if(customer != null) {
+                System.out.println(customer);
             }else{
                 break;
             }
         }
     }
-    public static Employee inputDataForNewEmployee() {
+    public static Customer inputDataForNewCustomer() {
 
         String name ="";
         do {
@@ -56,36 +55,29 @@ public class EmployeeView {
         System.out.println("Input your email: ");
         String email = scanner.nextLine();
 
-        String salary = "";
+        String customerId = "";
         do {
-            System.out.println("Input your salary: ");
-            salary = scanner.nextLine();
-            if (!CheckValidate.checkSalary(salary)) {
-                System.out.println(" Invalid format! Please try again. More than 0");
-            }
-        } while (!CheckValidate.checkSalary(salary));
-
-        System.out.println("Input your role: ");
-        String role = scanner.nextLine();
-        System.out.println("Input your degree: ");
-        String degree = scanner.nextLine();
-        String employeeId = "";
-        do {
-            System.out.println("Input your employeeId (format NV-XXXX): ");
-            employeeId = scanner.nextLine();
-            if (!CheckValidate.checkEmployeeId(employeeId)) {
+            System.out.println("Input your employeeId (format KH-XXXX): ");
+            customerId = scanner.nextLine();
+            if (!CheckValidate.checkCustomerId(customerId)) {
                 System.out.println(" Invalid format! Please try again. Example: NV-1234");
             }
-        } while (!CheckValidate.checkEmployeeId(employeeId));
+        } while (!CheckValidate.checkCustomerId(customerId));
+
+        System.out.println("Input customer type(normal, silver, diamond, gold): ");
+        String customerType = scanner.nextLine();
+        System.out.println("Input customer address: ");
+        String address = scanner.nextLine();
 
 
 
-        Employee employee = new Employee(name,birthday,gender,idNumber,phoneNumber,email,salary,role,degree,employeeId);
+
+        Customer employee = new Customer(name,birthday,gender,idNumber,phoneNumber,email,customerId,customerType,address);
         return employee;
     }
-    public static Employee inputDataForEditEmployee() {
-        System.out.println("Enter Employee ID to edit: ");
-        String employeeId = scanner.nextLine();
+    public static Customer inputDataForEditCustomer() {
+        System.out.println("Enter Customer ID to edit: ");
+        String customerId = scanner.nextLine();
 
         String name = "";
         do {
@@ -122,27 +114,13 @@ public class EmployeeView {
 
         System.out.println("Update email: ");
         String email = scanner.nextLine();
-
-        String salary = "";
-        do {
-            System.out.println("Update salary: ");
-            salary = scanner.nextLine();
-            if (!CheckValidate.checkSalary(salary)) {
-                System.out.println(" Invalid format! Please try again. More than 0");
-            }
-        } while (!CheckValidate.checkSalary(salary));
-
-        System.out.println("Update role: ");
-        String role = scanner.nextLine();
-
-        System.out.println("Update degree: ");
-        String degree = scanner.nextLine();
+        System.out.println("Update  customerType: ");
+        String customerType = scanner.nextLine();
+        System.out.println("Update address: ");
+        String address = scanner.nextLine();
 
         // Tạo object mới với dữ liệu đã cập nhật
-        Employee employee = new Employee(name, birthday, gender, idNumber, phoneNumber, email, salary, role, degree, employeeId);
+        Customer employee = new Customer(name, birthday, gender, idNumber, phoneNumber, email, customerId,customerType,address);
         return employee;
     }
-
-
-
 }

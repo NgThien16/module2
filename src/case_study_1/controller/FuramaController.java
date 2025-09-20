@@ -8,6 +8,7 @@ public class FuramaController {
     public static void displayMainMenu() {
         Scanner scanner = new Scanner(System.in);
         EmployeeController employeeController = new EmployeeController();
+        CustomerController customerController = new CustomerController();
 
         boolean flag = true;
         while (flag) {
@@ -64,13 +65,13 @@ public class FuramaController {
                         int displayChoice = Integer.parseInt(scanner.nextLine());
                         switch (displayChoice) {
                             case 1:
-
+                                customerController.displayCustomer();
                                 break;
                             case 2:
-
+                                customerController.addCustomer();
                                 break;
                             case 3:
-
+                                customerController.editCustomer();
                                 break;
                             case 4:
                                 customerFlag = false;
