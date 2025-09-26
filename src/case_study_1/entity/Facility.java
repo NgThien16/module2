@@ -6,13 +6,13 @@ public abstract class Facility {
     private int area;
     private int cost;
     private int maximumPeople;
-    private int type;
+    private String type;
 
     public Facility(){
 
     }
 
-    public Facility(String serviceCode, String serviceName, int area, int cost, int maximumPeople, int type) {
+    public Facility(String serviceCode, String serviceName, int area, int cost, int maximumPeople, String type) {
         this.serviceCode = serviceCode;
         this.serviceName = serviceName;
         this.area = area;
@@ -61,11 +61,11 @@ public abstract class Facility {
         this.maximumPeople = maximumPeople;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 

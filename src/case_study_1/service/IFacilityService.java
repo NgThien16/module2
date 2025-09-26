@@ -1,12 +1,11 @@
-package case_study_1.repository;
+package case_study_1.service;
 
 import case_study_1.entity.Facility;
 
 import java.util.Map;
 
-public interface IFacilityRepository {
+public interface IFacilityService {
     Map<Facility,Integer> findAllFacilities();
-    boolean add(Facility facility);
+    void add(Facility facility);
     Map<Facility, Integer> findMaintenanceList();
-
 }

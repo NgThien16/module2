@@ -9,6 +9,7 @@ public class FuramaController {
         Scanner scanner = new Scanner(System.in);
         EmployeeController employeeController = new EmployeeController();
         CustomerController customerController = new CustomerController();
+        FacilityController  facilityController = new FacilityController();
 
         boolean flag = true;
         while (flag) {
@@ -91,16 +92,39 @@ public class FuramaController {
                         System.out.println("3. Display list facilities maintenance");
                         System.out.println("4. Return main menu");
                         System.out.print("Input your choice: ");
-                        int deleteChoice = Integer.parseInt(scanner.nextLine());
-                        switch (deleteChoice) {
+                        int facilityChoice = Integer.parseInt(scanner.nextLine());
+                        switch (facilityChoice) {
                             case 1:
-
+                                facilityController.displayFacility();
                                 break;
                             case 2:
-
-                                break;
+                                boolean facilitiesFlag = true;
+                                while(facilitiesFlag) {
+                                    System.out.println("----  Add new facilities  ----");
+                                    System.out.println("1. Add new House");
+                                    System.out.println("2. Add new Villa");
+                                    System.out.println("3. Add new Room");
+                                    System.out.println("4. Return facility management");
+                                    int facilitiesChoice =  Integer.parseInt(scanner.nextLine());
+                                    switch(facilitiesChoice) {
+                                        case 1:
+                                            facilityController.addHouse();
+                                            break;
+                                        case 2:
+                                            facilityController.addVilla();
+                                            break;
+                                        case 3:
+                                            facilityController.addRoom();
+                                            break;
+                                        case 4:
+                                            facilitiesFlag = false;
+                                            break;
+                                        default:
+                                            System.out.println("Your choice is incorrect!");
+                                    }
+                                }
                             case 3:
-
+                                facilityController.displayMaintance();
                                 break;
                             case 4:
                                 facilityFlag = false;

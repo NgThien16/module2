@@ -57,7 +57,7 @@ public class EmployeeRepository implements IEmployeeRepository {
             }
             if (!found) {
                 System.out.println("Employee not found");
-                return false;
+                return true;
             }
             //ghi đè lại file CSV
             List<String> stringList = new ArrayList<>();

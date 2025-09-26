@@ -1,15 +1,15 @@
 package case_study_1.view;
 
-import case_study_1.entity.Customer;
+import case_study_1.entity.Magazine;
 import case_study_1.util.CheckValidate;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class CustomerView {
+public class MagazineView {
     private static Scanner scanner = new  Scanner(System.in);
-    public static void displayCustomer(List<Customer> customerList){
-        for(Customer customer: customerList){
+    public static void displayCustomer(List<Magazine> customerList){
+        for(Magazine customer: customerList){
             if(customer != null) {
                 System.out.println(customer);
             }else{
@@ -17,7 +17,7 @@ public class CustomerView {
             }
         }
     }
-    public static Customer inputDataForNewCustomer() {
+    public static Magazine inputDataForNewCustomer() {
 
         String name ="";
         do {
@@ -28,8 +28,15 @@ public class CustomerView {
             }
         } while (!CheckValidate.checkName(name));
 
-        System.out.println("Input your birthday: ");
-        String birthday = scanner.nextLine();
+        String birthday = "";
+        do {
+            System.out.println("Input your birthday: ");
+            birthday = scanner.nextLine();
+            if (!CheckValidate.checkAge(birthday)) {
+                System.out.println(" Invalid format! Please try again. Example: dd/MM/YYYY");
+            }
+        } while (!CheckValidate.checkAge(birthday));
+
         System.out.println("Input your gender: ");
         String gender = scanner.nextLine();
 
@@ -72,10 +79,10 @@ public class CustomerView {
 
 
 
-        Customer employee = new Customer(name,birthday,gender,idNumber,phoneNumber,email,customerId,customerType,address);
+        Magazine employee = new Magazine(name,birthday,gender,idNumber,phoneNumber,email,customerId,customerType,address);
         return employee;
     }
-    public static Customer inputDataForEditCustomer() {
+    public static Magazine inputDataForEditCustomer() {
         System.out.println("Enter Customer ID to edit: ");
         String customerId = scanner.nextLine();
 
@@ -88,8 +95,14 @@ public class CustomerView {
             }
         } while (!CheckValidate.checkName(name));
 
-        System.out.println("Update birthday: ");
-        String birthday = scanner.nextLine();
+        String birthday = "";
+        do {
+            System.out.println("Update your birthday: ");
+            birthday = scanner.nextLine();
+            if (!CheckValidate.checkAge(birthday)) {
+                System.out.println(" Invalid format! Please try again. Example: dd/MM/YYYY");
+            }
+        } while (!CheckValidate.checkAge(birthday));
 
         System.out.println("Update gender: ");
         String gender = scanner.nextLine();
@@ -120,7 +133,7 @@ public class CustomerView {
         String address = scanner.nextLine();
 
         // Tạo object mới với dữ liệu đã cập nhật
-        Customer employee = new Customer(name, birthday, gender, idNumber, phoneNumber, email, customerId,customerType,address);
+        Magazine employee = new Magazine(name, birthday, gender, idNumber, phoneNumber, email, customerId,customerType,address);
         return employee;
     }
 }

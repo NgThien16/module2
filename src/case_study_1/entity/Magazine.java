@@ -1,14 +1,14 @@
 package case_study_1.entity;
 
 
-public class Customer extends Person {
+public class Magazine extends Person {
     private String customerId;
     private String customerType;
     private String address;
 
-    public Customer() {}
+    public Magazine() {}
 
-    public Customer(String name, String birthday, String gender, String idNumber, String phoneNumber, String email, String customerId, String customerType, String address) {
+    public Magazine(String name, String birthday, String gender, String idNumber, String phoneNumber, String email, String customerId, String customerType, String address) {
         super(name, birthday, gender, idNumber, phoneNumber, email);
         this.customerId = customerId;
         this.customerType = customerType;

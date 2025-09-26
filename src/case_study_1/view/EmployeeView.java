@@ -29,8 +29,16 @@ public class EmployeeView {
             }
         } while (!CheckValidate.checkName(name));
 
-        System.out.println("Input your birthday: ");
-        String birthday = scanner.nextLine();
+
+        String birthday = "";
+        do {
+            System.out.println("Input your birthday: ");
+            birthday = scanner.nextLine();
+            if (!CheckValidate.checkAge(birthday)) {
+                System.out.println(" Invalid format! Please try again. Example: dd/MM/YYYY");
+            }
+        } while (!CheckValidate.checkAge(birthday));
+
         System.out.println("Input your gender: ");
         String gender = scanner.nextLine();
 
@@ -96,8 +104,14 @@ public class EmployeeView {
             }
         } while (!CheckValidate.checkName(name));
 
-        System.out.println("Update birthday: ");
-        String birthday = scanner.nextLine();
+        String birthday = "";
+        do {
+            System.out.println("Update your birthday: ");
+            birthday = scanner.nextLine();
+            if (!CheckValidate.checkAge(birthday)) {
+                System.out.println(" Invalid format! Please try again. Example: dd/MM/YYYY");
+            }
+        } while (!CheckValidate.checkAge(birthday));
 
         System.out.println("Update gender: ");
         String gender = scanner.nextLine();

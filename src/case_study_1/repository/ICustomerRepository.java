@@ -1,6 +1,6 @@
 package case_study_1.repository;
 
-import case_study_1.entity.Customer;
+import case_study_1.entity.Magazine;
 
-public interface ICustomerRepository extends IRepository<Customer>{
+public interface ICustomerRepository extends IRepository<Magazine>{
 }
